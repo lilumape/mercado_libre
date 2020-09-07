@@ -15,6 +15,7 @@ package co.com.mercadolibre.sistema.solar.utilidades;
 
 import co.com.mercadolibre.sistema.solar.modelos.Coordenada;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,10 +39,14 @@ public class CoordenadaUtilTest {
     public void testConvertirAnguloPequeno() {
         int angulo = 210;
         long distancia = 100;
-        Coordenada coordenadaEsperada = new Coordenada(BigDecimal.valueOf(-50.00000000000004), BigDecimal.valueOf(-86.60254037844385));
+        Coordenada coordenadaEsperada = new Coordenada(BigDecimal.valueOf(-50.00000000000004), BigDecimal.valueOf(-86.60254037844383));
         Coordenada coordenadaObtenida = CoordenadaUtil.convertirARectangular(angulo, distancia);
-        Assertions.assertEquals(coordenadaEsperada.getX(), coordenadaObtenida.getX());
-        Assertions.assertEquals(coordenadaEsperada.getY(), coordenadaObtenida.getY());
+        BigDecimal xEsperado = coordenadaEsperada.getX().setScale(Constantes.PRECISION, RoundingMode.HALF_EVEN);
+        BigDecimal yEsperado = coordenadaEsperada.getY().setScale(Constantes.PRECISION, RoundingMode.HALF_EVEN);
+        BigDecimal xObtenido = coordenadaObtenida.getX().setScale(Constantes.PRECISION, RoundingMode.HALF_EVEN);
+        BigDecimal yObtenido = coordenadaObtenida.getY().setScale(Constantes.PRECISION, RoundingMode.HALF_EVEN);
+        Assertions.assertEquals(xEsperado, xObtenido);
+        Assertions.assertEquals(yEsperado, yObtenido);
     }
 
     @DisplayName("Convierte una coordenada polar en rectangular con un angulo superior a 90 grados")
