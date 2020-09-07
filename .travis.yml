@@ -1,12 +1,14 @@
 language: java
 sudo: false
+services:
+  - docker
 before_install:
 - chmod +x mvnw
-script: mvn package validate compile clean test package verify deploy
+script: mvn package validate compile clean test package verify
 deploy:
   provider: gae
   keyfile: client-secret.json.enc
-  project: mercado_libre
+  project: mercado-libre-288818
 env:
   global:
     secure: N523b3XTHc4pdyM6qWgYeIvs91y1qiRMOeDHSYex5nT+YBG9HYTcNbZ5OvT9/hYp/lEHANJSo9HCYFTdzqmAwsctg6tFtT6RrJJ7ZFieBpU3z8es+IVzFaVOZpdyGreLkdxpwEmobmeiwrCzLqfAxIqQzY0s8hy+d92yEO58eI68Za+HTl5KSA/wrgLKcGAKfdwgh9ooBNk/5SUqQ6/KKPt0wiUr0rI22gnx5zY39IDxAdtoXsG7j0otoSEm/dPcymQvT25MoVpHay6HBOnRQZI9mNs+2ued4CVmZALuTEzfvufFYUuN9AI6q2H6SHFBskUXK8tbIRlxwOsonpBqDcBTmY4Qkuy3QzBvRZw4nH9CqmFXLYyxjo8ZnGshKZOhIT68Rxn6KbqJ2QNpdaQ/9o/1Pf6o0MLTe87atJmEzdofQcgjZ4yQQSccATtKWZ+PP670qgrogz3AQI/YmxBRADWtz8fCDnlWVrjk0HCycxyq4EosUZW2fSSfkS7B4qFFDT7uCnGNRD1zeAiKrTx9pEJRU/OB3GZ0/BQBHk3dR/wrG5dmasH1+4Vfbtoq+xB2m0584CrsaC8xvOYBT4Fos/o0vrilr2dhrhM2VY6zrQtslVCO1T1R5ubcwoixdWiASQamhiU/UoGE4hBNQb0m2LR3Y2WJYFbav/fuo5/9OWA=
