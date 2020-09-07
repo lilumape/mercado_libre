@@ -3,3 +3,7 @@ sudo: false
 before_install:
  - chmod +x mvnw
 script: mvn package validate compile clean test package verify
+deploy:
+  provider: gae
+  keyfile: "client-secret.json.enc"
+  project: "mercado_libre"
