@@ -2,7 +2,7 @@ language: java
 sudo: false
 before_install:
 - chmod +x mvnw
-script: mvn package validate compile clean test package verify
+script: mvn package validate compile clean test package verify deploy
 deploy:
   provider: gae
   keyfile: client-secret.json.enc
