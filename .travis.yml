@@ -1,0 +1,5 @@
+language: java
+sudo: false
+before_install:
+ - chmod +x mvnw
+script: mvn package validate compile clean test package verify
