@@ -14,6 +14,7 @@
 package co.com.mercadolibre.sistema.solar.api;
 
 import co.com.mercadolibre.sistema.solar.entidades.Clima;
+import co.com.mercadolibre.sistema.solar.modelos.ClimaResponse;
 import co.com.mercadolibre.sistema.solar.servicios.PronosticadorService;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.DisplayName;
@@ -48,7 +49,7 @@ public class ClimaApiControllerTest {
     }
 
     private void mockServicio() {
-        Clima clima = new Clima();
+        ClimaResponse clima = new ClimaResponse("1","SQUIA");
         Mockito.when(pronosticadorService.consultarDia(Mockito.anyLong())).thenReturn(clima);
     }
 

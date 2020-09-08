@@ -18,6 +18,7 @@ import co.com.mercadolibre.sistema.solar.entidades.Clima;
 import co.com.mercadolibre.sistema.solar.entidades.Prediccion;
 import co.com.mercadolibre.sistema.solar.excepciones.ExcepcionOpciones;
 import co.com.mercadolibre.sistema.solar.excepciones.SistemaRuntimeException;
+import co.com.mercadolibre.sistema.solar.modelos.ClimaResponse;
 import co.com.mercadolibre.sistema.solar.servicios.impl.PronosticadorServiceImpl;
 import co.com.mercadolibre.sistema.solar.modelos.Coordenada;
 import co.com.mercadolibre.sistema.solar.repositorios.PrediccionRepository;
@@ -66,7 +67,7 @@ public class PronosticadorServiceTest {
         prediccion.setClima(clima);
         Optional<Prediccion> optional = Optional.of(prediccion);
         Mockito.when(prediccionRepository.findById(Mockito.anyLong())).thenReturn(optional);
-        Clima climaObtenido = pronosticadorService.consultarDia(dia);
+        ClimaResponse climaObtenido = pronosticadorService.consultarDia(dia);
         Assertions.assertNotNull(climaObtenido);
     }
 
