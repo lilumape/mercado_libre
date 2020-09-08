@@ -90,7 +90,6 @@ mvn clean compile test package
 
 Para consumir el servicio se debe realizar una autenticación normal de usuario y password, las credenciales serán enviadas al correo
 
-Url login: https://sistema-solar-mary.herokuapp.com/api/v1/login
 Url API Rest: https://sistema-solar-mary.herokuapp.com/api/v1/climas/dias/${dia}
 
 ### Documentación ###
