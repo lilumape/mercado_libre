@@ -66,7 +66,7 @@ DIA PICO DE LLUVIA esta dado por la condición
 
 78 + 180x	0 < x < 19  102 + 180x
 
-Siendo x= El numero del día y el valor de máxima lluvia es 
+Siendo x= El número del día-1
 
 ### Detalle técnico ###
 
