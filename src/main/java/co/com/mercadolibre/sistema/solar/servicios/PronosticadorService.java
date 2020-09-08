@@ -13,7 +13,7 @@
  */
 package co.com.mercadolibre.sistema.solar.servicios;
 
-import co.com.mercadolibre.sistema.solar.entidades.Clima;
+import co.com.mercadolibre.sistema.solar.modelos.ClimaResponse;
 
 /**
  * Servicio de pronostico del clima.
@@ -28,6 +28,6 @@ public interface PronosticadorService {
      * @param dia Dia a consultar
      * @return Clima encontrado
      */
-    Clima consultarDia(long dia);
+    ClimaResponse consultarDia(long dia);
 
 }

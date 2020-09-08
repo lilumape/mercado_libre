@@ -98,9 +98,9 @@ Url API Rest: http://<<Ip_server>>:8089/co/com/mercadolibre/sistemasolar/api/v1/
 
  * JavaDoc: [https://maryperez.bitbucket.io](https://maryperez.bitbucket.io)
 
-* CI: Travis https://travis-ci.com/bitbucket/lilumape_/sistema-solar (Requiere cuenta)
+* CI: Herokuapp https://dashboard.heroku.com/apps/sistema-solar-mary
 
-* Contrato del servicio: http://<<Ip_server>>:8089/co/com/mercadolibre/sistemasolar/api/v1/swagger-ui.html
+* Contrato del servicio: https://sistema-solar-mary.herokuapp.com/v1/swagger-ui.html
 
 ### Manejo de excepciones ###
 
