@@ -13,7 +13,7 @@
  */
 package co.com.mercadolibre.sistema.solar.api;
 
-import co.com.mercadolibre.sistema.solar.entidades.Clima;
+import co.com.mercadolibre.sistema.solar.modelos.ClimaResponse;
 import co.com.mercadolibre.sistema.solar.modelos.ErrorResponse;
 import co.com.mercadolibre.sistema.solar.servicios.PronosticadorService;
 import io.swagger.annotations.Api;
@@ -49,6 +49,7 @@ public class ClimaApiController {
 
     /**
      * Constructor.
+     *
      * @param pronosticadorService PronosticadorService
      */
     public ClimaApiController(PronosticadorService pronosticadorService) {
@@ -62,20 +63,20 @@ public class ClimaApiController {
      * @return ResponseEntity<Clima>
      */
     @ApiOperation(value = "Consulta la condición climatica de un día en particular", nickname = "dias",
-            notes = "", response = Clima.class, tags = {"dias"})
+            notes = "", response = ClimaResponse.class, tags = {"dias"})
     @ApiResponses(value = {
         @ApiResponse(code = 200, message = "se realiza el proceso de consulta de la prediccion",
-                response = Clima.class),
+                response = ClimaResponse.class),
         @ApiResponse(code = 204, message = "No Content"),
         @ApiResponse(code = 400, message = "Error en la peticion", response = ErrorResponse.class),
         @ApiResponse(code = 403, message = "Access Denied"),
-        @ApiResponse(code = 404, message = "Not Found"),        
+        @ApiResponse(code = 404, message = "Not Found"),
         @ApiResponse(code = 500, message = "Internal Server Error", response = ErrorResponse.class)})
 
     @RequestMapping(value = "/dias/{dia}",
-            produces = {"application/json"}, 
+            produces = {"application/json"},
             method = RequestMethod.GET)
-    ResponseEntity<Clima> dias(@PathVariable @Pattern(regexp = "[0-9]+") String dia) {
+    ResponseEntity<ClimaResponse> dias(@PathVariable @Pattern(regexp = "[0-9]+") String dia) {
         return new ResponseEntity<>(pronosticadorService.consultarDia(Long.valueOf(dia)), HttpStatus.OK);
     }
 

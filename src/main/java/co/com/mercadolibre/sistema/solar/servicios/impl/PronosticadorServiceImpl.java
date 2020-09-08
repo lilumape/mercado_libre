@@ -19,6 +19,7 @@ import co.com.mercadolibre.sistema.solar.entidades.Prediccion;
 import co.com.mercadolibre.sistema.solar.excepciones.ExcepcionOpciones;
 import static co.com.mercadolibre.sistema.solar.excepciones.ExcepcionOpciones.NO_GUARDA_PRONOSTICO;
 import co.com.mercadolibre.sistema.solar.excepciones.SistemaRuntimeException;
+import co.com.mercadolibre.sistema.solar.modelos.ClimaResponse;
 import co.com.mercadolibre.sistema.solar.repositorios.PrediccionRepository;
 import co.com.mercadolibre.sistema.solar.servicios.PronosticadorService;
 import java.util.HashMap;
@@ -63,12 +64,12 @@ public class PronosticadorServiceImpl implements PronosticadorService {
      */
     @Override
     @Cacheable("consultaxDia")
-    public Clima consultarDia(long dia) {
+    public ClimaResponse consultarDia(long dia) {
         Optional<Prediccion> prediccion = prediccionRepository.findById(dia);
         if (!prediccion.isPresent()) {
             throw new SistemaRuntimeException(ExcepcionOpciones.NO_EXISTEN_DATOS);
         }
-        return prediccion.get().getClima();
+        return new ClimaResponse(String.valueOf(dia), prediccion.get().getClima().getNombre());
     }
 
     /**

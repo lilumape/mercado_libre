@@ -9,8 +9,3 @@ before_install:
 - openssl aes-256-cbc -k $super_secret_password -in client-secret.json.enc -out client-secret.json -d
 - chmod +x mvnw
 script: mvn package validate compile clean test package verify
-deploy:
-  provider: gae
-  keyfile: client-secret.json.enc
-  project: mercado-libre-288818
-   all_branches: true
