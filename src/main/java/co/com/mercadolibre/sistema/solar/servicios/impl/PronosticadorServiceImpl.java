@@ -25,6 +25,7 @@ import co.com.mercadolibre.sistema.solar.servicios.PronosticadorService;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,7 @@ import org.springframework.stereotype.Service;
  * @author Mary Perez <lperez@grupoasd.com.co>
  */
 @Service
+@Slf4j
 public class PronosticadorServiceImpl implements PronosticadorService {
 
     /**

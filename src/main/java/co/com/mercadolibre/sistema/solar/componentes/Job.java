@@ -18,6 +18,7 @@ import co.com.mercadolibre.sistema.solar.repositorios.PrediccionRepository;
 import co.com.mercadolibre.sistema.solar.servicios.impl.PronosticadorServiceImpl;
 import co.com.mercadolibre.sistema.solar.utilidades.Constantes;
 import javax.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Component;
  * @author Mary Perez <lilumape@gmail.com>
  */
 @Component
+@Slf4j
 public class Job {
 
     /**

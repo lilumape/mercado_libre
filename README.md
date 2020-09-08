@@ -90,23 +90,30 @@ mvn clean compile test package
 
 Para consumir el servicio se debe realizar una autenticación normal de usuario y password, las credenciales serán enviadas al correo
 
-Url login: http://<<Ip_server>>:8089/co/com/mercadolibre/sistemasolar/api/v1/login
-Url API Rest: http://<<Ip_server>>:8089/co/com/mercadolibre/sistemasolar/api/v1/climas/dias/3601
+Url login: https://sistema-solar-mary.herokuapp.com/api/v1/login
+Url API Rest: https://sistema-solar-mary.herokuapp.com/api/v1/climas/dias/${dia}
 
 ### Documentación ###
-
 
  * JavaDoc: [https://maryperez.bitbucket.io](https://maryperez.bitbucket.io)
 
 * CI: Herokuapp https://dashboard.heroku.com/apps/sistema-solar-mary
 
-* Contrato del servicio: https://sistema-solar-mary.herokuapp.com/v1/swagger-ui.html
+* Contrato del servicio: https://sistema-solar-mary.herokuapp.com/api/v1/swagger-ui.html
+
+### Ejecución CI/CD###
+
+Una vez se sube el código en GitHub este se comprueba con Travis y se despliega automaticamente en Herokuapp. 
+
+En los logs de Herokuapp se debe revisar el password generado para autenticarse
+
+Para probar el servicio se debe ingresar a la url https://sistema-solar-mary.herokuapp.com/api/v1/swagger-ui.html
 
 ### Manejo de excepciones ###
 
-El proyecto tiene implementado un manejador dentro del paquete config llamado RestResponseEntityExceptionHandler el cual se encarga de capturar todas las excepciones no controladas que se generen, almacenarlas en log del sistema con el cotenido de la excepción junto con un codigo unico de identificación del error, este mensaje junto con el código de error es retornado como objeto JSON como error 500, con este código unico de error el clinte puede reportar el error y asi poder ubicar el error en logs junto con toda la traza. 
+El proyecto tiene implementado un manejador dentro del paquete config llamado "ExcepcionHandler" el cual se encarga de capturar todas las excepciones no controladas que se generen, almacenarlas en log del sistema con el cotenido de la excepción junto con un codigo unico de identificación del error, este mensaje junto con el código de error es retornado como objeto JSON como error 500, con este código unico de error el clinte puede reportar el error y asi poder ubicar el error en logs junto con toda la traza. 
 
-Dentro de las propiedades de configuración del proyecto (archivo .properties) se encuentra una llave llamada "app.api.showexceptions" que permite que sea o no visible el contenido del error dentro del JSON de respuesta. En producción se recomienda colocar esta propiedad en false para que se muestre un error generico y asi no exponer mensajes de error técnicos los cuales pueden generar vulnerabilidades de seguridad.
+Dentro de las propiedades de configuración del proyecto (archivo .properties) se encuentra una llave llamada "app.api.mostrarexcepciones" que permite que sea o no visible el contenido del error dentro del JSON de respuesta. En producción se recomienda colocar esta propiedad en false para que se muestre un error generico y asi no exponer mensajes de error técnicos los cuales pueden generar vulnerabilidades de seguridad.
 
 Teniendo en cuenta que ese manejador existe en el proyecto, las excepciones que no puedan ser controladas deben ser disparadas hacia arriba de la pila de llamados sea utilizando la clausula throws en la firma del método o capturando la excepción y disparando una excepción de tipo Runtime para que sea capturada por el manejador.
 

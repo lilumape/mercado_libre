@@ -25,6 +25,7 @@ import static co.com.mercadolibre.sistema.solar.modelos.Planeta.VULCANO;
 import static co.com.mercadolibre.sistema.solar.utilidades.CoordenadaUtil.convertirARectangular;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,6 +34,7 @@ import org.springframework.stereotype.Component;
  * @author Mary Perez <lilumape@gmail.com>
  */
 @Component
+@Slf4j
 public class PronosticadorClimaHandler {
 
     /**
