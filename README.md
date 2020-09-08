@@ -88,7 +88,6 @@ Para generar el archivo Jar con todo lo necesario para ejecutar el proyecto sin 
 
 mvn clean compile test package
 
-Para consumir el servicio se debe realizar una autenticación normal de usuario y password, las credenciales serán enviadas al correo
 
 Url API Rest: https://sistema-solar-mary.herokuapp.com/api/v1/climas/dias/${dia}
 
@@ -104,9 +103,6 @@ Url API Rest: https://sistema-solar-mary.herokuapp.com/api/v1/climas/dias/${dia}
 
 Una vez se sube el código en GitHub este se comprueba con Travis y se despliega automaticamente en Herokuapp. 
 
-En los logs de Herokuapp se debe revisar el password generado para autenticarse
-
-Para probar el servicio se debe ingresar a la url https://sistema-solar-mary.herokuapp.com/api/v1/swagger-ui.html
 
 ### Manejo de excepciones ###
 
