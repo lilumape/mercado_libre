@@ -78,7 +78,7 @@ public class Job {
      * Calcula el clima del dia siguiente al que se encuentra guardado en la BD.
      * Esta tarea es ejecutada todos los dias
      */
-    @Scheduled(cron = "0 0 3 * * *")
+    @Scheduled(cron = "0 50 11 * * *")
     public void calcularClimaDiaSiguiente() {
         long ultimoDia = prediccionRepository.count();
         long diaConsultar = ultimoDia + 1;
